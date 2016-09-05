@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 @EntityScan("org.jugvale.model.entities")
-@EnableJpaRepositories("org.juvale.model.repositories")
+@EnableJpaRepositories("org.jugvale.model.repositories")
 public class PokeapiBilacApplication {
 
 	public static void main(String[] args) {
