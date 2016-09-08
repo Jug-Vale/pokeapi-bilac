@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar pokeapi-bilac/target/pokeapi-bilac.jar
+web: java -Dserver.port=$PORT -jar ./pokeapi-bilac/target/pokeapi-bilac.jar
