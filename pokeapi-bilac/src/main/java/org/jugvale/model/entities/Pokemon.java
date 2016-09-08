@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pokemon implements Serializable {
@@ -20,11 +21,14 @@ public class Pokemon implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull
 	private String nome;
+	
 	private String categoria;
 	private String habilidade;
 	private BigDecimal altura;
 	private BigDecimal peso;
+	private String evolucaoNome;
 	
 	@ElementCollection
 	@CollectionTable(name = "pokemon_tem_tipo")
@@ -108,6 +112,14 @@ public class Pokemon implements Serializable {
 	
 	public void setSexo(Collection<Sexo> sexo) {
 		this.sexo = sexo;
+	}
+	
+	public String getEvolucaoNome() {
+		return evolucaoNome;
+	}
+	
+	public void setEvolucaoNome(String evolucaoNome) {
+		this.evolucaoNome = evolucaoNome;
 	}
 	
 }
