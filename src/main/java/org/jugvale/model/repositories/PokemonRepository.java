@@ -1,10 +1,10 @@
 package org.jugvale.model.repositories;
 
-import org.jugvale.model.entities.Pokemon;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
-	
-	Pokemon findByNomeIgnoreCase(String nome);
-	
+import org.jugvale.model.entities.Pokemon;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface PokemonRepository extends PagingAndSortingRepository<Pokemon, Long> {
+	Optional<Pokemon> findByNomeIgnoreCase(String nome);
 }
