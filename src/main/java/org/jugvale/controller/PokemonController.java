@@ -18,6 +18,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,21 +33,21 @@ public class PokemonController {
 	@Autowired
 	private PokemonRepository pokemonRepository;
 	
-	@RequestMapping(value = {"/hateoas", "/hateoas/"}, method = RequestMethod.GET)
 	@ResponseStatus(code = HttpStatus.OK)
+	@RequestMapping(value = {"/hateoas", "/hateoas/"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public PagedResources<Resource<Pokemon>> buscaTodosComHateoas(final Pageable pageable, final PagedResourcesAssembler<Pokemon> assembler) {
 		Page<Pokemon> pokemons = pokemonRepository.findAll(pageable);
 		return assembler.toResource(pokemons);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(code = HttpStatus.OK)
+	@RequestMapping(method = RequestMethod.GET)
 	public Collection<Pokemon> buscaTodosSemHateoas(final Pageable pageable) {
 		return pokemonRepository.findAll(pageable).getContent();
 	}
 	
-	@RequestMapping(value = "/{nome}", method = RequestMethod.GET)
 	@ResponseStatus(code = HttpStatus.OK)
+	@RequestMapping(value = "/{nome}", method = RequestMethod.GET)
 	public Resource<Pokemon> buscaPorNome(@PathVariable final String nome) {
 		
 		Pokemon pokemon = pokemonRepository.findByNomeIgnoreCase(nome).orElseThrow(ResourceNotFoundException :: new);
@@ -61,14 +62,14 @@ public class PokemonController {
 		return resource;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@RequestMapping(method = RequestMethod.POST)
 	public Pokemon cria(@Valid @RequestBody final Pokemon pokemon) {
 		return pokemonRepository.save(pokemon);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
+	@RequestMapping(method = RequestMethod.PUT)
 	public Pokemon editar(@Valid @RequestBody final Pokemon pokemon) {
 		
 		if(Objects.nonNull(pokemon.getId())) {
@@ -78,8 +79,8 @@ public class PokemonController {
 		return pokemonRepository.save(pokemon);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(code = HttpStatus.OK)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void deletar(@PathVariable final Long id) {
 		pokemonRepository.delete(id);
 	}
