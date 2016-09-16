@@ -38,10 +38,6 @@ public class Pokemon implements Serializable {
 	@CollectionTable(name = "pokemon_tem_fraqueza")
 	private Collection<String> fraquezas;
 	
-	@ElementCollection
-	@CollectionTable(name = "pokemon_tem_sexo")
-	private Collection<Sexo> sexo;
-	
 	public Long getId() {
 		return id;
 	}
@@ -104,14 +100,6 @@ public class Pokemon implements Serializable {
 	
 	public void setFraquezas(Collection<String> fraquezas) {
 		this.fraquezas = fraquezas;
-	}
-	
-	public Collection<Sexo> getSexo() {
-		return sexo;
-	}
-	
-	public void setSexo(Collection<Sexo> sexo) {
-		this.sexo = sexo;
 	}
 	
 	public String getEvolucaoNome() {

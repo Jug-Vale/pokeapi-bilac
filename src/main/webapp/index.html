@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pokémon</title>
+</head>
+<body>
+
+	<h1>Pokemons</h1>
+
+	<table border="1">
+		<thead>
+
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Categoria</th>
+				<th>Habilidade</th>
+				<th>Altura</th>
+				<th>Peso</th>
+				<th>Evolução</th>
+				<th>Tipo</th>
+				<th>Fraquezas</th>
+				<th>Editar</th>
+				<th>Apagar</th>
+			</tr>
+		</thead>
+
+		<tbody id="tblPokemons"></tbody>
+		
+	</table>
+
+	<hr />
+
+	<h2 id="tituloForm"></h2>
+	
+	<div id="campos">
+		<input type="text" placeholder="nome" id="nome" /> <br /><br />
+		<input type="text" placeholder="categoria" id="categoria" /> <br /><br />
+		<input type="text" placeholder="habilidade" id="habilidade" /> <br /><br />
+		<input type="text" placeholder="altura" id="altura" /> <br /><br />
+		<input type="text" placeholder="peso" id="peso" /> <br /><br />
+		<input type="text" placeholder="evolucaoNome" id="evolucaoNome" /> <br /><br />
+		<input type="text" placeholder="tipo,tipo" id="tipo" /> <br /><br />
+		<input type="text" placeholder="fraqueza,fraqueza" id="fraquezas" /> <br /><br />
+		<button onclick="envia()">Salvar</button>
+		<button onclick="limparSelecionado()">Cancela</button>
+	</div>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
